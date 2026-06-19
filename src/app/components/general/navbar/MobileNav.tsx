@@ -1,0 +1,33 @@
+import Link from "next/link";
+import { navLinks } from "./Navbar";
+
+interface MobileNavProps {
+  navbarOpen: boolean;
+}
+
+
+export default function MobileNav({navbarOpen}: MobileNavProps) {
+    return(
+        // {insert background overlay and mobile nav menu here}
+<>
+<div className={`fixed inset-0 transform right-0 z-50 bg-black opacity-30 w-full h-screen transition-all duration-500`} >
+
+  {/* Mobile nav menu content */}
+  <ul className={`fixed flex items-center justify-center text-white flex-col h-full transform transition-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-slate-800 space-y-1 z-80 right-0 top-0`}>
+    {navLinks.map((link) => {
+      return (
+        <li key={link.url}>
+            <Link href={link.url} className="flex justify-center items-center text-xl font-medium text-white py-4 px-6 rounded-lg hover:bg-slate-700/50 hover:textcyan-300 transition-all duration-300 border-b border-slate-700/30 w-full text-center">
+                {link.label}
+            </Link>
+        </li>
+      );
+    }
+    )}
+  </ul>
+
+</div>
+</>
+
+    )
+}
