@@ -2,8 +2,8 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import LinkButton from "../LinkButton";
-import { LuDownload } from "react-icons/lu";
-import { useState } from "react";
+import { LuDownload, LuMenu, LuX } from "react-icons/lu";
+import { useEffect, useState } from "react";
 import MobileNav from "./MobileNav";
 
 export const navLinks = [
@@ -18,8 +18,26 @@ export const navLinks = [
 
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const [navBackground, setNavBackground] = useState(false);
+
+    useEffect(() => {
+        const navHandler = () => {
+            if (window.scrollY >= 90) {  
+                setNavBackground(true);
+            } else {
+                setNavBackground(false);
+            }
+        };
+
+        window.addEventListener("scroll", navHandler);
+
+        return () => {
+          return window.removeEventListener("scroll", navHandler);
+        };
+    }, []);
+
   return (
-    <nav className="h-18 fixed z-50 w-full bg-slate-950/80 backdrop-blur-sm border-b border-slate-700/50 flex items-center justify-between px-6">
+    <nav className={`h-18 fixed z-50 w-full transition-all duration-300 ${navBackground ? "bg-slate-900/90 shadow-md" : "bg-transparent"}`}>
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         <Logo />
         <ul className="hidden md:flex gap-6 text-lg font-medium space-x-10">
@@ -48,7 +66,11 @@ export default function Navbar() {
           />
         </div>
 
-        <MobileNav navbarOpen = {navbarOpen} onClose = {() => setNavbarOpen(false)} />
+        <button onClick={() => setNavbarOpen(!navbarOpen)} className="w-8 h-8 cursor-pointer text-white z-100 lg:hidden">
+          {navbarOpen ? <LuX size={30} /> : <LuMenu size={30} />}
+        </button>
+
+        <MobileNav navbarOpen={navbarOpen} /> 
       </div>
     </nav>
   );
