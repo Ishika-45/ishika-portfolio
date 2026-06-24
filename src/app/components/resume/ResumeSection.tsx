@@ -1,5 +1,5 @@
 import { LuBookOpen, LuGraduationCap, LuTrophy } from "react-icons/lu";
-import { RiReactjsLine } from "react-icons/ri";
+import { RiNextjsFill, RiReactjsLine } from "react-icons/ri";
 import Header from "../general/Header";
 import ResumeCard from "./ResumeCard";
 
@@ -49,7 +49,7 @@ export default function ResumeSection() {
             />
 
             <ResumeCard
-              icon={LuBookOpen}
+              icon={RiNextjsFill}
               role="Independent Full-Stack Developer"
               description="Designed and developed full-stack applications from concept to deployment, focusing on scalable architecture, user experience, authentication systems, and AI-powered solutions."
               date="2024 - Present"
