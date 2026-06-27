@@ -1,3 +1,4 @@
+import AboutSection from "./components/about/AboutSection";
 import ContactSection from "./components/contact/ContactSection";
 import HeroSection from "./components/home/hero/HeroSection";
 import ServiceSection from "./components/home/services/ServiceSection";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
     <HeroSection />
+    <AboutSection />
     <ServiceSection />
     <ResumeSection />
     <ProjectSection />

@@ -4,7 +4,7 @@ import { SiExpress, SiMongodb, SiTailwindcss, SiTypescript } from "react-icons/s
 import { FaGitAlt, FaGithub, FaJava, FaNodeJs, FaReact, FaRobot } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
 
-const skill = [
+const skills = [
   {
     name: "JavaScript",
     icon: <DiJavascript />,
@@ -70,10 +70,10 @@ const skill = [
 
 export default function SkillSection() {
   return (
-    <section id="skills " className="py-16">
+    <section id="skills" className="py-16">
       <Header title="My Skills" />
       <div className="flex flex-wrap justify-center gap-6">
-        {skill.map((skill, index) => {
+        {skills.map((skill, index) => {
           return (
             <div key={index} className="bg-slate-900 text-center w-40 h-48 rounded-3xl flex flex-col items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
               <div className="text-5xl text-gray-300">

@@ -16,7 +16,7 @@ export default function ServiceSection() {
     >
       <Header title="What I Build" />
 
-      <div className="w-[90%] sm:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-20">
+      <div className="w-[90%] sm:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
         <ServiceCard
           icon={
             <SquareCode

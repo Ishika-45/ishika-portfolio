@@ -14,7 +14,7 @@ const contactInfo = [
         icon: <FaPhone className="w-6 h-6" />,
         title: "Phone",
         value: "+91 8894116929",
-        link: "tel: +8894116929",
+        link: "tel: +918894116929",
     },
     {
         icon: <FaMapMarkedAlt className="w-6 h-6" />,
@@ -53,7 +53,7 @@ export default function ContactSection() {
                 <div>
                     <form className="rounded-lg bg-slate-900 px-4 py-8">
                         <input type="text" placeholder="Your Name" className={InputStyles} required />
-                        <input type="text" placeholder="Your Email" className={InputStyles} required />
+                        <input type="email" placeholder="Your Email" className={InputStyles} required />
                         <input type="text" placeholder="Subject of Message" className={`${InputStyles} resize-none`} required />
                         <textarea placeholder="Message" className={InputStyles} rows={5} required />
                         <button className="w-full bg-linear-to-r from-blue-900 to-purple-800 hover:from-blue-800 hover:to-purple-700 text-white font-semibold py-4 rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-70">
