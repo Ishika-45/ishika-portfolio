@@ -38,7 +38,7 @@ export default function HeroSection() {
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 blur-lg animate-pulse opacity-50" />
           <Image
-            src="/images/image.png"
+            src="/images/Image.png"
             alt="Ishika Bansal"
             className="rounded-full object-cover"
             fill

@@ -48,7 +48,7 @@ export default function AboutSection() {
             <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-indigo-500/30 to-purple-600/20 blur-xl" />
             <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 opacity-40" />
             <Image
-              src="/images/image.png"
+              src="/images/Image.png"
               alt="Ishika Bansal"
               fill
               sizes="(max-width: 640px) 256px, 320px"
