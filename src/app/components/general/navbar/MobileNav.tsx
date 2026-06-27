@@ -1,44 +1,44 @@
+"use client";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "./Navbar";
-import LinkButton from "../LinkButton";
-import { LuDownload } from "react-icons/lu";
 
 interface MobileNavProps {
   navbarOpen: boolean;
+  onClose: () => void;
 }
 
-
-export default function MobileNav({navbarOpen}: MobileNavProps) {
-  const showMobileNav = navbarOpen ? "translate-x-0" : "translate-x-[100%]";
-    return(
-<>
-<div className={`fixed inset-0 right-0 z-50 bg-black/30 backdrop-blur-sm w-full h-screen transition-all duration-500 ${showMobileNav} lg:hidden`}>
-
-  {/* Mobile nav menu content */}
-  <ul className={`fixed flex items-center justify-center text-white flex-col h-full transform transition-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-slate-800 space-y-1 z-[80] right-0 top-0 ${showMobileNav} lg:hidden`}>
-    {navLinks.map((link) => {
-      return (
-        <li key={link.url}>
-            <Link href={link.url} className="flex justify-center items-center text-xl font-medium text-white py-4 px-6 rounded-lg hover:bg-slate-700/50 hover:text-cyan-300 transition-all duration-300 border-b border-slate-700/30 w-full text-center">
-                {link.label}
-            </Link>
-        </li>
-      );
-    }
-    )}
-    <div className="my-4">
-              <LinkButton
-                href="/documents/IshikaBansal.pdf"
-                text="Download CV"
-                download
-                icon={LuDownload}
-                iconPosition="left"
-              />
-            </div>
-  </ul>
-
-</div>
-</>
-
-    )
+export default function MobileNav({ navbarOpen, onClose }: MobileNavProps) {
+  return (
+    <AnimatePresence>
+      {navbarOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+          className="lg:hidden w-full bg-slate-900/95 backdrop-blur-md border-t border-slate-700/50 shadow-xl"
+        >
+          <ul className="flex flex-col py-4">
+            {navLinks.map((link, index) => (
+              <motion.li
+                key={link.url}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.2 }}
+              >
+                <Link
+                  href={link.url}
+                  onClick={onClose}
+                  className="block px-8 py-3 text-gray-300 hover:text-white hover:bg-slate-800/60 transition-colors duration-200 text-sm font-medium"
+                >
+                  {link.label}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }

@@ -1,31 +1,39 @@
+"use client";
+import { motion } from "framer-motion";
+import { IconType } from "react-icons";
 
 interface ResumeCardProps {
-    role: string;
-    icon: IconType;
-    date?: string;
-    description: string;
+  icon: IconType;
+  role: string;
+  description: string;
+  date: string;
+  index?: number;
 }
 
-export default function ResumeCard({ role, icon: Icon, date, description }: ResumeCardProps) {
-    return (
-        <div className="flex items-start space-x-6 bg-blue-950/20 p-4 sm:p-8 rounded-md">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blu950/20 rounded-full grid place-items-center flex items-center justify-center">
-                <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-gray-200" />
-            </div>
-            <div className="flex-1">
-                {date && (
-                    <p className="mb-2 px-4 py-1 sm:py-1.5 rounded-full bg-gray-300 text-gray-700 w-fit text-sm sm:text-lg font-bold">
-                        {date}
-                    </p>
-                )}
-                <p className="text-gray-200 text-xl sm:text-2xl font-semibold tracking-wide">
-                    {role}
-                </p>
-                <p className="text-sm sm:text-base mt-3 text-gray-400 tracking-wide">
-                    {description}
-                </p>
-            </div>
+export default function ResumeCard({ icon: Icon, role, description, date, index = 0 }: ResumeCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -24 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, delay: index * 0.1, ease: "easeOut" }}
+      className="group relative pl-10 border-l-2 border-slate-700 hover:border-indigo-500 transition-colors duration-300"
+    >
+      {/* Timeline dot */}
+      <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-800 border-2 border-slate-600 group-hover:border-indigo-500 group-hover:bg-indigo-500/20 transition-all duration-300" />
+
+      <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-5 group-hover:border-slate-600 transition-colors duration-300">
+        <div className="flex items-start gap-3 mb-3">
+          <div className="p-2 rounded-lg bg-slate-900/80 text-indigo-400 mt-0.5 shrink-0">
+            <Icon size={18} />
+          </div>
+          <div>
+            <h3 className="text-gray-100 font-semibold text-sm leading-snug">{role}</h3>
+            <span className="text-indigo-400 text-xs font-medium mt-1 inline-block">{date}</span>
+          </div>
         </div>
-    
-    )
+        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+      </div>
+    </motion.div>
+  );
 }
