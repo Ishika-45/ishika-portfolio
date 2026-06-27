@@ -11,10 +11,10 @@ const poppins = Poppins({
 
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Ishika Bansal | Full-Stack Developer",
   description:
-    "Full-Stack Developer specializing in React, Next.js, TypeScript, Node.js, and AI-powered web applications. Explore my projects, skills, and experience.",
+    "Portfolio of Ishika Bansal - Full-Stack Developer specializing in Next.js, React, TypeScript, AI-powered web applications, and modern web technologies.",
 };
 
 export default function RootLayout({
